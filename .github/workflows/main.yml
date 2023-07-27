@@ -1,3 +1,5 @@
+name: CI CD Pipeline on GitHub Actions
+
 on:
   push:
     branches:
@@ -16,3 +18,8 @@ jobs:
         run: npm run build
       - run: tree
       - run: echo "Hurray!"
+  test-app:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      -run: echo "Testing..."
