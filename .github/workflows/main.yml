@@ -23,4 +23,4 @@ jobs:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
-      -run: echo "Testing..."
+      - run: echo "Testing..."
