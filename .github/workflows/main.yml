@@ -18,6 +18,7 @@ jobs:
         run: npm run build
       - run: tree
       - run: echo "Hurray!"
+
   test-app:
     needs: build-and-deploy
     runs-on: ubuntu-latest
