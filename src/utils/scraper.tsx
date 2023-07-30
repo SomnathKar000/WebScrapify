@@ -36,9 +36,16 @@ const findBodyNode = (node: any): any => {
   return null;
 };
 const getTextFromNode = (node: any): string => {
+  const excludedElements = ["img", "button", "video"];
+
   if (node.nodeName === "#text") {
     return node.value.trim();
   }
+
+  if (excludedElements.includes(node.nodeName)) {
+    return "";
+  }
+
   let text = "";
   if (node.childNodes && node.childNodes.length > 0) {
     for (const childNode of node.childNodes) {

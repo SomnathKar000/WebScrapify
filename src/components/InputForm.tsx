@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
-import Results from "./Results";
 import { useScrapContext } from "../contexts/scrapContext";
 
 const style = {
   margin: 3,
-  disply: "flex",
+  display: "flex",
   flexDirection: "column",
 };
 
-const InputForm: React.FC = () => {
+const InputForm = () => {
   const [query, setQuery] = useState<string>("");
-  const { getResults, results } = useScrapContext();
+  const { getResults, loading } = useScrapContext();
   const onClick = async () => {
     await getResults(query);
   };
@@ -30,12 +29,11 @@ const InputForm: React.FC = () => {
           helperText="Enter your search query..."
         />
         <Box>
-          <Button onClick={onClick} variant="contained">
+          <Button onClick={onClick} disabled={loading} variant="contained">
             Search
           </Button>
         </Box>
       </Box>
-      <Results results={results} />
     </Box>
   );
 };
